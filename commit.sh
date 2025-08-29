@@ -21,6 +21,11 @@ fi
 git pull --rebase
 git add .
 
+if git diff --cached --quiet; then
+	echo "No changes to commit. Aborting."
+	exit 0
+fi
+
 if [ "$automated" = false ]; then
 	git status
 	read -p "Do you want to commit and push these changes? (y/N) " RESP
