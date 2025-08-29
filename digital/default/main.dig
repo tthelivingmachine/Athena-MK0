@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <version>2</version>
+  <attributes/>
+  <visualElements>
+    <visualElement>
+      <elementName>Register</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>IR0</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1180" y="620"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Register</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>IR1</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1300" y="620"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Register</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>IR2</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1420" y="620"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Rectangle</elementName>
+      <elementAttributes>
+        <entry>
+          <string>RectHeight</string>
+          <int>9</int>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>Instruction Register</string>
+        </entry>
+        <entry>
+          <string>RectWidth</string>
+          <int>18</int>
+        </entry>
+      </elementAttributes>
+      <pos x="1140" y="540"/>
+    </visualElement>
+    <visualElement>
+      <elementName>instruction_decoder.dig</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+      </elementAttributes>
+      <pos x="1300" y="500"/>
+    </visualElement>
+  </visualElements>
+  <wires>
+    <wire>
+      <p1 x="1060" y="640"/>
+      <p2 x="1180" y="640"/>
+    </wire>
+    <wire>
+      <p1 x="1060" y="660"/>
+      <p2 x="1300" y="660"/>
+    </wire>
+    <wire>
+      <p1 x="1060" y="680"/>
+      <p2 x="1420" y="680"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="520"/>
+      <p2 x="1300" y="520"/>
+    </wire>
+    <wire>
+      <p1 x="1340" y="520"/>
+      <p2 x="1440" y="520"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="620"/>
+      <p2 x="1200" y="760"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="520"/>
+      <p2 x="1200" y="560"/>
+    </wire>
+    <wire>
+      <p1 x="1440" y="620"/>
+      <p2 x="1440" y="760"/>
+    </wire>
+    <wire>
+      <p1 x="1440" y="520"/>
+      <p2 x="1440" y="560"/>
+    </wire>
+    <wire>
+      <p1 x="1300" y="620"/>
+      <p2 x="1300" y="660"/>
+    </wire>
+    <wire>
+      <p1 x="1300" y="500"/>
+      <p2 x="1300" y="520"/>
+    </wire>
+    <wire>
+      <p1 x="1220" y="620"/>
+      <p2 x="1220" y="760"/>
+    </wire>
+    <wire>
+      <p1 x="1460" y="620"/>
+      <p2 x="1460" y="760"/>
+    </wire>
+    <wire>
+      <p1 x="1060" y="-140"/>
+      <p2 x="1060" y="640"/>
+    </wire>
+    <wire>
+      <p1 x="1060" y="660"/>
+      <p2 x="1060" y="680"/>
+    </wire>
+    <wire>
+      <p1 x="1060" y="680"/>
+      <p2 x="1060" y="700"/>
+    </wire>
+    <wire>
+      <p1 x="1060" y="640"/>
+      <p2 x="1060" y="660"/>
+    </wire>
+    <wire>
+      <p1 x="1320" y="620"/>
+      <p2 x="1320" y="760"/>
+    </wire>
+    <wire>
+      <p1 x="1320" y="500"/>
+      <p2 x="1320" y="560"/>
+    </wire>
+    <wire>
+      <p1 x="1180" y="620"/>
+      <p2 x="1180" y="640"/>
+    </wire>
+    <wire>
+      <p1 x="1420" y="620"/>
+      <p2 x="1420" y="680"/>
+    </wire>
+    <wire>
+      <p1 x="1340" y="620"/>
+      <p2 x="1340" y="760"/>
+    </wire>
+    <wire>
+      <p1 x="1340" y="500"/>
+      <p2 x="1340" y="520"/>
+    </wire>
+    <wire>
+      <p1 x="1100" y="-140"/>
+      <p2 x="1100" y="700"/>
+    </wire>
+  </wires>
+  <measurementOrdering/>
+</circuit>
