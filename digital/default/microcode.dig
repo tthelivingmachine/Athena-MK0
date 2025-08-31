@@ -97,7 +97,8 @@
         <entry>
           <string>Data</string>
           <data>4,1,14*0,4,1,14*0,4,1,14*0,4,1,14*0,4,1,14*0,4,1,14*0,4,1,14*0
-,4,1</data>
+,4,1,14*0,4,1,14*0,4,1,14*0,4,1,14*0,4,1,14*0,4,1,14*0,4,1,14*0
+,4,1,14*0,4,1</data>
         </entry>
       </elementAttributes>
       <pos x="1200" y="560"/>
@@ -123,7 +124,9 @@
         </entry>
         <entry>
           <string>Data</string>
-          <data>21,15*0,21,15*0,21,15*0,21,15*0,21,15*0,21,15*0,21,15*0,21</data>
+          <data>21,80,14*0,21,80,14*0,21,80,14*0,21,80,14*0,21,80,14*0,21,80,14*0
+,21,80,14*0,21,80,14*0,21,15*0,21,15*0,21,15*0,21,15*0,21,15*0
+,21,15*0,21,15*0,21</data>
         </entry>
       </elementAttributes>
       <pos x="1040" y="560"/>
@@ -149,8 +152,9 @@
         </entry>
         <entry>
           <string>Data</string>
-          <data>1c,40,14*0,1c,40,14*0,1c,40,14*0,1c,40,14*0,1c,40,14*0,1c,40,14*0
-,1c,40,14*0,1c,40</data>
+          <data>1c,10,14*0,1c,10,14*0,1c,10,14*0,1c,10,14*0,1c,10,14*0,1c,10,14*0
+,1c,10,14*0,1c,10,14*0,1c,40,14*0,1c,40,14*0,1c,40,14*0,1c,40
+,14*0,1c,40,14*0,1c,40,14*0,1c,40,14*0,1c,40</data>
         </entry>
       </elementAttributes>
       <pos x="880" y="560"/>
@@ -604,7 +608,8 @@
         </entry>
         <entry>
           <string>Data</string>
-          <data>1,15*0,1,15*0,1,15*0,1,15*0,1,15*0,1,15*0,1,15*0,1</data>
+          <data>1,15*0,1,15*0,1,15*0,1,15*0,1,15*0,1,15*0,1,15*0,1,15*0,1,15*0
+,1,15*0,1,15*0,1,15*0,1,15*0,1,15*0,1,15*0,1</data>
         </entry>
       </elementAttributes>
       <pos x="720" y="560"/>
@@ -646,28 +651,28 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>upc</string>
+          <string>uPC</string>
         </entry>
         <entry>
           <string>Bits</string>
           <int>4</int>
         </entry>
       </elementAttributes>
-      <pos x="1220" y="340"/>
+      <pos x="1220" y="380"/>
     </visualElement>
     <visualElement>
       <elementName>Out</elementName>
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>addr</string>
+          <string>ADDR</string>
         </entry>
         <entry>
           <string>Bits</string>
-          <int>4</int>
+          <int>12</int>
         </entry>
       </elementAttributes>
-      <pos x="1220" y="520"/>
+      <pos x="1220" y="480"/>
     </visualElement>
   </visualElements>
   <wires>
@@ -680,6 +685,10 @@
       <p2 x="1100" y="320"/>
     </wire>
     <wire>
+      <p1 x="1200" y="480"/>
+      <p2 x="1220" y="480"/>
+    </wire>
+    <wire>
       <p1 x="1060" y="420"/>
       <p2 x="1180" y="420"/>
     </wire>
@@ -690,14 +699,6 @@
     <wire>
       <p1 x="860" y="340"/>
       <p2 x="920" y="340"/>
-    </wire>
-    <wire>
-      <p1 x="1200" y="340"/>
-      <p2 x="1220" y="340"/>
-    </wire>
-    <wire>
-      <p1 x="1200" y="520"/>
-      <p2 x="1220" y="520"/>
     </wire>
     <wire>
       <p1 x="680" y="520"/>
@@ -734,6 +735,10 @@
     <wire>
       <p1 x="860" y="380"/>
       <p2 x="920" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="380"/>
+      <p2 x="1220" y="380"/>
     </wire>
     <wire>
       <p1 x="960" y="660"/>
@@ -861,23 +866,23 @@
     </wire>
     <wire>
       <p1 x="1200" y="460"/>
-      <p2 x="1200" y="520"/>
+      <p2 x="1200" y="480"/>
     </wire>
     <wire>
       <p1 x="1200" y="320"/>
-      <p2 x="1200" y="340"/>
+      <p2 x="1200" y="380"/>
     </wire>
     <wire>
-      <p1 x="1200" y="520"/>
-      <p2 x="1200" y="540"/>
-    </wire>
-    <wire>
-      <p1 x="1200" y="340"/>
+      <p1 x="1200" y="380"/>
       <p2 x="1200" y="440"/>
     </wire>
     <wire>
       <p1 x="1200" y="540"/>
       <p2 x="1200" y="560"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="480"/>
+      <p2 x="1200" y="540"/>
     </wire>
     <wire>
       <p1 x="880" y="700"/>

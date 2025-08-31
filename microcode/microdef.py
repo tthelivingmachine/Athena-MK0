@@ -2,21 +2,21 @@
 FIRST_BYTE_FETCH = ["PC_INC", "MEM_OE", "IR0_READ_DBUS", "ABUS_WRITE_DEVICE=1", "DBUS_WRITE_DEVICE=7"]
 SECOND_BYTE_FETCH = ["PC_INC", "MEM_OE", "IR1_READ_DBUS", "ABUS_WRITE_DEVICE=1"]
 THIRD_BYTE_FETCH = ["PC_INC", "MEM_OE", "IR2_READ_DBUS", "ABUS_WRITE_DEVICE=1"]
+MICROCODE = {}
 
 
-MICROCODE = {
-    0x00: [  # MOV ACC, R[vvv]
-        FIRST_BYTE_FETCH,
-        ["STORE_ACC", "uPC_CLR"]  # uPC=1
-    ],
-    0x01: [
-        FIRST_BYTE_FETCH,
-        ["STORE_ACC", "uPC_CLR"]  # uPC=1
-    ],
-}
-
+# MOV R[vvv], ACC
 for vvv in range(8):
     op = 0x00 | vvv
+
+    MICROCODE[op] = [
+        FIRST_BYTE_FETCH,
+        ["DBUS_WRITE_DEVICE=4", "DBUS_READ_DEVICE=1", "uPC_CLR"]
+    ]
+
+# MOV ACC, R[vvv]
+for vvv in range(8):
+    op = 0b00001000 | vvv
 
     MICROCODE[op] = [
         FIRST_BYTE_FETCH,
