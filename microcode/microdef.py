@@ -1,4 +1,3 @@
-
 FIRST_BYTE_FETCH = ["PC_INC", "MEM_OE", "IR0_READ_DBUS", "ABUS_WRITE_DEVICE=1", "DBUS_WRITE_DEVICE=7"]
 SECOND_BYTE_FETCH = ["PC_INC", "MEM_OE", "IR1_READ_DBUS", "ABUS_WRITE_DEVICE=1"]
 THIRD_BYTE_FETCH = ["PC_INC", "MEM_OE", "IR2_READ_DBUS", "ABUS_WRITE_DEVICE=1"]
@@ -14,14 +13,16 @@ for vvv in range(8):
         ["DBUS_WRITE_DEVICE=4", "DBUS_READ_DEVICE=1", "uPC_CLR"]
     ]
 
-# MOV ACC, R[vvv]
-for vvv in range(8):
-    op = 0b00001000 | vvv
+# Implementing all ALU in one go
+prefixes = [0b00010, 0b00011, 0b00100, 0b00101, 0b00110]
 
-    MICROCODE[op] = [
-        FIRST_BYTE_FETCH,
-        ["STORE_ACC", "uPC_CLR"]
-    ]
+for prefix in prefixes:
+    for vvv in range(8):
+        op = (prefix << 3) | vvv  # shift prefix into top 5 bits
+        MICROCODE[op] = [
+            FIRST_BYTE_FETCH,
+            ["STORE_ACC", "uPC_CLR"]
+        ]
 
 # Define the field mappings based on your specification
 FIELD_DEFINITIONS = {
