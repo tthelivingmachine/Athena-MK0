@@ -46,16 +46,12 @@
       <elementName>Splitter</elementName>
       <elementAttributes>
         <entry>
-          <string>mirror</string>
-          <boolean>true</boolean>
-        </entry>
-        <entry>
           <string>rotation</string>
           <rotation rotation="3"/>
         </entry>
         <entry>
           <string>Input Splitting</string>
-          <string>8,4</string>
+          <string>4,8</string>
         </entry>
         <entry>
           <string>Output Splitting</string>
@@ -91,12 +87,17 @@
           <rotation rotation="3"/>
         </entry>
         <entry>
+          <string>Label</string>
+          <string>0</string>
+        </entry>
+        <entry>
           <string>Bits</string>
           <int>8</int>
         </entry>
         <entry>
           <string>Data</string>
-          <data>6,1,254*0,1</data>
+          <data>4,1,14*0,4,1,14*0,4,1,14*0,4,1,14*0,4,1,14*0,4,1,14*0,4,1,14*0
+,4,1</data>
         </entry>
       </elementAttributes>
       <pos x="1200" y="560"/>
@@ -113,12 +114,16 @@
           <rotation rotation="3"/>
         </entry>
         <entry>
+          <string>Label</string>
+          <string>1</string>
+        </entry>
+        <entry>
           <string>Bits</string>
           <int>8</int>
         </entry>
         <entry>
           <string>Data</string>
-          <data>2</data>
+          <data>21,15*0,21,15*0,21,15*0,21,15*0,21,15*0,21,15*0,21,15*0,21</data>
         </entry>
       </elementAttributes>
       <pos x="1040" y="560"/>
@@ -135,8 +140,17 @@
           <rotation rotation="3"/>
         </entry>
         <entry>
+          <string>Label</string>
+          <string>2</string>
+        </entry>
+        <entry>
           <string>Bits</string>
           <int>8</int>
+        </entry>
+        <entry>
+          <string>Data</string>
+          <data>1c,40,14*0,1c,40,14*0,1c,40,14*0,1c,40,14*0,1c,40,14*0,1c,40,14*0
+,1c,40,14*0,1c,40</data>
         </entry>
       </elementAttributes>
       <pos x="880" y="560"/>
@@ -581,8 +595,16 @@
           <rotation rotation="3"/>
         </entry>
         <entry>
+          <string>Label</string>
+          <string>3</string>
+        </entry>
+        <entry>
           <string>Bits</string>
           <int>8</int>
+        </entry>
+        <entry>
+          <string>Data</string>
+          <data>1,15*0,1,15*0,1,15*0,1,15*0,1,15*0,1,15*0,1,15*0,1</data>
         </entry>
       </elementAttributes>
       <pos x="720" y="560"/>
@@ -619,11 +641,39 @@
       </elementAttributes>
       <pos x="1160" y="680"/>
     </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>upc</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>4</int>
+        </entry>
+      </elementAttributes>
+      <pos x="1220" y="340"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>addr</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>4</int>
+        </entry>
+      </elementAttributes>
+      <pos x="1220" y="520"/>
+    </visualElement>
   </visualElements>
   <wires>
     <wire>
       <p1 x="1160" y="320"/>
-      <p2 x="1220" y="320"/>
+      <p2 x="1200" y="320"/>
     </wire>
     <wire>
       <p1 x="1080" y="320"/>
@@ -631,7 +681,7 @@
     </wire>
     <wire>
       <p1 x="1060" y="420"/>
-      <p2 x="1200" y="420"/>
+      <p2 x="1180" y="420"/>
     </wire>
     <wire>
       <p1 x="1060" y="340"/>
@@ -640,6 +690,14 @@
     <wire>
       <p1 x="860" y="340"/>
       <p2 x="920" y="340"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="340"/>
+      <p2 x="1220" y="340"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="520"/>
+      <p2 x="1220" y="520"/>
     </wire>
     <wire>
       <p1 x="680" y="520"/>
@@ -680,10 +738,6 @@
     <wire>
       <p1 x="960" y="660"/>
       <p2 x="960" y="900"/>
-    </wire>
-    <wire>
-      <p1 x="1220" y="320"/>
-      <p2 x="1220" y="440"/>
     </wire>
     <wire>
       <p1 x="900" y="660"/>
@@ -766,6 +820,10 @@
       <p2 x="1180" y="680"/>
     </wire>
     <wire>
+      <p1 x="1180" y="420"/>
+      <p2 x="1180" y="440"/>
+    </wire>
+    <wire>
       <p1 x="1180" y="680"/>
       <p2 x="1180" y="900"/>
     </wire>
@@ -802,6 +860,26 @@
       <p2 x="940" y="680"/>
     </wire>
     <wire>
+      <p1 x="1200" y="460"/>
+      <p2 x="1200" y="520"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="320"/>
+      <p2 x="1200" y="340"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="520"/>
+      <p2 x="1200" y="540"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="340"/>
+      <p2 x="1200" y="440"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="540"/>
+      <p2 x="1200" y="560"/>
+    </wire>
+    <wire>
       <p1 x="880" y="700"/>
       <p2 x="880" y="720"/>
     </wire>
@@ -812,18 +890,6 @@
     <wire>
       <p1 x="880" y="540"/>
       <p2 x="880" y="560"/>
-    </wire>
-    <wire>
-      <p1 x="1200" y="420"/>
-      <p2 x="1200" y="440"/>
-    </wire>
-    <wire>
-      <p1 x="1200" y="460"/>
-      <p2 x="1200" y="540"/>
-    </wire>
-    <wire>
-      <p1 x="1200" y="540"/>
-      <p2 x="1200" y="560"/>
     </wire>
     <wire>
       <p1 x="820" y="660"/>

@@ -73,7 +73,8 @@ def generate_microcode_rom(microcode: Dict[int, List[List[str]]], max_uPC_steps:
             if uPC >= max_uPC_steps:
                 break
                 
-            address = (opcode << 8) | uPC
+            #address = (opcode << 8) | uPC
+            address = (opcode * max_uPC_steps) + uPC
             if address < rom_size:
                 rom[address] = build_microinstruction(fields)
     
@@ -97,7 +98,8 @@ def verify_microcode(microcode: Dict[int, List[List[str]]], rom_data: List[int],
             if uPC >= max_uPC_steps:
                 break
                 
-            address = (opcode << 8) | uPC
+            #address = (opcode << 8) | uPC
+            address = (opcode * max_uPC_steps) + uPC
             if address >= len(rom_data):
                 continue
                 
