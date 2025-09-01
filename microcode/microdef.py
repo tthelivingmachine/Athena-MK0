@@ -30,6 +30,20 @@ for prefix in [0b00010, 0b00011, 0b00100, 0b00101, 0b00110]:
             ["STORE_FLAG", "STORE_ACC", "uPC_CLR"]
         ]
 
+# NOP
+MICROCODE[0x39] = [
+    FIRST_BYTE_FETCH
+]
+
+# RET
+MICROCODE[0x38] = [
+    FIRST_BYTE_FETCH
+    ["SP_DEC"],
+    ["ABUS_WRITE_DEVICE=2", "MEM_OE", "PC_HI_WE", "PC_SOURCE=0"],
+    ["SP_DEC"],
+    ["ABUS_WRITE_DEVICE=2", "MEM_OE", "PC_LO_WE", "PC_SOURCE=0", "uPC_CLR"]
+]
+
 # MOV ACC, #imm8
 for vvv in range(8):
     op = (0b01001000) | vvv
@@ -114,6 +128,35 @@ for vvv in range(8):
         SECOND_BYTE_FETCH,
         THIRD_BYTE_FETCH,
         ["ABUS_WRITE_DEVICE=4", "DBUS_WRITE_DEVICE=1", "MEM_WE", "uPC_CLR"]
+    ]
+
+# Call #imm16
+for vvv in range(8):
+    op = (0b10010000) | vvv
+    MICROCODE[op] = [
+        FIRST_BYTE_FETCH,
+        SECOND_BYTE_FETCH,
+        THIRD_BYTE_FETCH,
+        # 3 is low
+        # 4 is high
+        # 5 is write PC+1 Lo
+        # 6 is write PC+1 Hi
+        ["ABUS_WRITE_DEVICE=2", "SP_INC", "DBUS_WRITE_DEVICE=5", "MEM_WE"],
+        ["ABUS_WRITE_DEVICE=2", "SP_INC", "DBUS_WRITE_DEVICE=6", "MEM_WE"],
+        ["PC_SOURCE=4", "PC_HI_WE"],
+        ["PC_SOURCE=3", "PC_LO_WE", "uPC_CLR"]
+
+    ]
+
+# Branch #imm16 if (vvv)
+for vvv in range(8):
+    op = (0b10011000) | vvv
+    MICROCODE[op] = [
+        FIRST_BYTE_FETCH,
+        SECOND_BYTE_FETCH + ["uPC_COND_CLR"],
+        THIRD_BYTE_FETCH,
+        ["PC_SOURCE=4", "PC_HI_WE"],
+        ["PC_SOURCE=3", "PC_LO_WE", "uPC_CLR"]
     ]
 
 # Define the field mappings based on your specification
