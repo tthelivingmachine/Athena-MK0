@@ -1,7 +1,15 @@
 FIRST_BYTE_FETCH = ["PC_INC", "MEM_OE", "IR0_READ_DBUS", "ABUS_WRITE_DEVICE=1", "DBUS_WRITE_DEVICE=7"]
-SECOND_BYTE_FETCH = ["PC_INC", "MEM_OE", "IR1_READ_DBUS", "ABUS_WRITE_DEVICE=1"]
-THIRD_BYTE_FETCH = ["PC_INC", "MEM_OE", "IR2_READ_DBUS", "ABUS_WRITE_DEVICE=1"]
-MICROCODE = {}
+SECOND_BYTE_FETCH = ["PC_INC", "MEM_OE", "IR1_READ_DBUS", "ABUS_WRITE_DEVICE=1", "DBUS_WRITE_DEVICE=7"]
+THIRD_BYTE_FETCH = ["PC_INC", "MEM_OE", "IR2_READ_DBUS", "ABUS_WRITE_DEVICE=1", "DBUS_WRITE_DEVICE=7"]
+
+MICROCODE = {
+        0x38 : [ # RET, implement later as I figure out the stack.
+        FIRST_BYTE_FETCH,
+    ],
+        0x39 : [ # NOP
+        FIRST_BYTE_FETCH,
+    ]
+}
 
 
 # MOV R[vvv], ACC
@@ -14,15 +22,49 @@ for vvv in range(8):
     ]
 
 # Implementing all ALU in one go
-prefixes = [0b00010, 0b00011, 0b00100, 0b00101, 0b00110]
-
-for prefix in prefixes:
+for prefix in [0b00010, 0b00011, 0b00100, 0b00101, 0b00110]:
     for vvv in range(8):
         op = (prefix << 3) | vvv  # shift prefix into top 5 bits
         MICROCODE[op] = [
             FIRST_BYTE_FETCH,
             ["STORE_ACC", "uPC_CLR"]
         ]
+
+# MOV ACC, #imm8
+for vvv in range(8):
+    op = (0b01001000) | vvv
+    MICROCODE[op] = [
+        FIRST_BYTE_FETCH,
+        SECOND_BYTE_FETCH,
+        ["STORE_ACC", "uPC_CLR"]
+    ]
+
+# ADD ACC, #imm8
+for vvv in range(8):
+    op = (0b01010000) | vvv
+    MICROCODE[op] = [
+        FIRST_BYTE_FETCH,
+        SECOND_BYTE_FETCH,
+        ["STORE_ACC", "uPC_CLR"]
+    ]
+
+# POP R[vvv]
+for vvv in range(8):
+    op = (0b01011000) | vvv
+    MICROCODE[op] = [
+        FIRST_BYTE_FETCH,
+        ["SP_DEC"],
+        ["ABUS_WRITE_DEVICE=2", "DBUS_READ_DEVICE=1", "DBUS_WRITE_DEVICE=7", "MEM_OE", "uPC_CLR"]
+    ]
+
+# PUSH R[vvv]
+for vvv in range(8):
+    op = (0b01100000) | vvv
+    MICROCODE[op] = [
+        FIRST_BYTE_FETCH,
+        ["ABUS_WRITE_DEVICE=2", "SP_INC", "DBUS_WRITE_DEVICE=1", "MEM_WE", "uPC_CLR"]
+    ]
+
 
 # Define the field mappings based on your specification
 FIELD_DEFINITIONS = {
@@ -43,6 +85,6 @@ FIELD_DEFINITIONS = {
     "DBUS_WRITE_DEVICE": {"bits": (18, 20), "value": 0}, # 3 bits
     "STORE_FLAG": {"bits": (21, 21), "value": 1},
     "STORE_ACC": {"bits": (22, 22), "value": 1},
-    "MEM_WE": {"bits": (23,23), "value":1},
-    "MEM_OE": {"bits": (24,24), "value":1},
+    "MEM_WE": {"bits": (30,30), "value":1},
+    "MEM_OE": {"bits": (31,31), "value":1},
 }

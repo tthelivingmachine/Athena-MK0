@@ -871,10 +871,80 @@
         </entry>
         <entry>
           <string>Label</string>
-          <string>ACC</string>
+          <string>SP_Hi</string>
         </entry>
       </elementAttributes>
       <pos x="600" y="220"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Or</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>Inputs</string>
+          <int>3</int>
+        </entry>
+      </elementAttributes>
+      <pos x="660" y="300"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>WR_VVV_MUX_6</string>
+        </entry>
+      </elementAttributes>
+      <pos x="700" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>WR_RS1_MUX_6</string>
+        </entry>
+      </elementAttributes>
+      <pos x="680" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>WR_RS0_MUX_6</string>
+        </entry>
+      </elementAttributes>
+      <pos x="660" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>SP_Lo</string>
+        </entry>
+      </elementAttributes>
+      <pos x="680" y="220"/>
     </visualElement>
   </visualElements>
   <wires>
@@ -1019,6 +1089,14 @@
       <p2 x="1000" y="320"/>
     </wire>
     <wire>
+      <p1 x="680" y="300"/>
+      <p2 x="680" y="320"/>
+    </wire>
+    <wire>
+      <p1 x="680" y="220"/>
+      <p2 x="680" y="240"/>
+    </wire>
+    <wire>
       <p1 x="780" y="300"/>
       <p2 x="780" y="320"/>
     </wire>
@@ -1059,6 +1137,10 @@
       <p2 x="880" y="320"/>
     </wire>
     <wire>
+      <p1 x="660" y="300"/>
+      <p2 x="660" y="320"/>
+    </wire>
+    <wire>
       <p1 x="920" y="300"/>
       <p2 x="920" y="320"/>
     </wire>
@@ -1089,6 +1171,10 @@
     <wire>
       <p1 x="1020" y="220"/>
       <p2 x="1020" y="240"/>
+    </wire>
+    <wire>
+      <p1 x="700" y="300"/>
+      <p2 x="700" y="320"/>
     </wire>
   </wires>
   <measurementOrdering/>
