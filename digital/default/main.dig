@@ -2671,7 +2671,7 @@
         </entry>
         <entry>
           <string>Data</string>
-          <data>48,80,3,8b,80,0,48,c0,3,83,80</data>
+          <data>48,80,7,90,0,c,6*0,48,11,38</data>
         </entry>
       </elementAttributes>
       <pos x="740" y="1220"/>
