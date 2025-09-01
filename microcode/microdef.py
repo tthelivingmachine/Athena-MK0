@@ -39,9 +39,9 @@ MICROCODE[0x39] = [
 MICROCODE[0x38] = [
     FIRST_BYTE_FETCH,
     ["SP_DEC"],
-    ["ABUS_WRITE_DEVICE=2", "MEM_OE", "PC_LO_WE", "PC_SOURCE=0"],
+    ["DBUS_WRITE_DEVICE=7", "ABUS_WRITE_DEVICE=2", "MEM_OE", "PC_HI_WE", "PC_SOURCE=0"],
     ["SP_DEC"],
-    ["ABUS_WRITE_DEVICE=2", "MEM_OE", "PC_HI_WE", "PC_SOURCE=0", "uPC_CLR"]
+    ["DBUS_WRITE_DEVICE=7", "ABUS_WRITE_DEVICE=2", "MEM_OE", "PC_LO_WE", "PC_SOURCE=0", "uPC_CLR"]
 ]
 
 # MOV ACC, #imm8
@@ -79,7 +79,7 @@ for vvv in range(8):
         ["ABUS_WRITE_DEVICE=2", "SP_INC", "DBUS_WRITE_DEVICE=1", "MEM_WE", "uPC_CLR"]
     ]
 
-# Branch rel #imm if (vvv)
+# Branch rel #imm8 if (vvv)
 for vvv in range(8):
     op = (0b01101000) | vvv
     MICROCODE[op] = [
