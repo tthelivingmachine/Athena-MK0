@@ -2,11 +2,11 @@
 Athena MK0 is a homebrew CPU.
 
 ## Finished Instructions
-- [x] RET  
-- [x] NOP  
-- [x] MOV R[vvv], ACC  
-- [x] MOV ACC, R[vvv]  
-- [x] ADD ACC, R[vvv]  
+- [ ] RET (partly)
+- [ ] NOP (partly)  
+- [x] MOV R[vvv], ACC
+- [x] MOV ACC, R[vvv]
+- [x] ADD ACC, R[vvv]
 - [x] SUB ACC, R[vvv]  
 - [x] AND ACC, R[vvv]  
 - [x] OR ACC, R[vvv]  
