@@ -1,0 +1,11 @@
+0x2                     MOV B, ACC          ; B = 0
+0x48 0x80               MOV ACC, #128       ; ACC = 0x80    
+0x1                     MOV A, ACC          ; A = 0x80
+0x3                     MOV C, ACC          ; C = 0x80
+
+0x7b 0x28               STORE C, [A:B]      ; MEMORY[0x8000] = C = 0x80
+
+0x48 0xC0               MOV ACC, #192       ; ACC = 192
+0x3                     MOV C, ACC          ; C = ACC
+
+0x73 0x28               LOAD C, [A:B]       ; C = MEMORY[0x8000]

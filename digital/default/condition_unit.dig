@@ -215,7 +215,7 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
-          <string>~out</string>
+          <string>out</string>
         </entry>
       </elementAttributes>
       <pos x="1020" y="260"/>

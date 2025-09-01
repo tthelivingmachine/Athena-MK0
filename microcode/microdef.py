@@ -18,7 +18,7 @@ for vvv in range(8):
 
     MICROCODE[op] = [
         FIRST_BYTE_FETCH,
-        ["DBUS_WRITE_DEVICE=4", "DBUS_READ_DEVICE=1", "uPC_CLR"]
+        ["STORE_FLAG", "DBUS_WRITE_DEVICE=4", "DBUS_READ_DEVICE=1", "uPC_CLR"]
     ]
 
 # Implementing all ALU in one go
@@ -27,7 +27,7 @@ for prefix in [0b00010, 0b00011, 0b00100, 0b00101, 0b00110]:
         op = (prefix << 3) | vvv  # shift prefix into top 5 bits
         MICROCODE[op] = [
             FIRST_BYTE_FETCH,
-            ["STORE_ACC", "uPC_CLR"]
+            ["STORE_FLAG", "STORE_ACC", "uPC_CLR"]
         ]
 
 # MOV ACC, #imm8
@@ -36,7 +36,7 @@ for vvv in range(8):
     MICROCODE[op] = [
         FIRST_BYTE_FETCH,
         SECOND_BYTE_FETCH,
-        ["STORE_ACC", "uPC_CLR"]
+        ["STORE_FLAG", "STORE_ACC", "uPC_CLR"]
     ]
 
 # ADD ACC, #imm8
@@ -45,7 +45,7 @@ for vvv in range(8):
     MICROCODE[op] = [
         FIRST_BYTE_FETCH,
         SECOND_BYTE_FETCH,
-        ["STORE_ACC", "uPC_CLR"]
+        ["STORE_FLAG", "STORE_ACC", "uPC_CLR"]
     ]
 
 # POP R[vvv]
@@ -63,6 +63,37 @@ for vvv in range(8):
     MICROCODE[op] = [
         FIRST_BYTE_FETCH,
         ["ABUS_WRITE_DEVICE=2", "SP_INC", "DBUS_WRITE_DEVICE=1", "MEM_WE", "uPC_CLR"]
+    ]
+
+# Branch rel #imm if (vvv)
+for vvv in range(8):
+    op = (0b01101000) | vvv
+    MICROCODE[op] = [
+        FIRST_BYTE_FETCH,
+        SECOND_BYTE_FETCH + ["uPC_COND_CLR"],
+        # load 16 bit (pc + #imm8)
+        # 1 - rel low
+        # 2 - rel high
+        ["PC_SOURCE=2", "PC_HI_WE"],
+        ["PC_SOURCE=1", "PC_LO_WE", "uPC_CLR"]
+    ]
+
+# Load R[vvv], [rs0:rs1]
+for vvv in range(8):
+    op = (0b01110000) | vvv
+    MICROCODE[op] = [
+        FIRST_BYTE_FETCH,
+        SECOND_BYTE_FETCH,
+        ["ABUS_WRITE_DEVICE=3", "DBUS_WRITE_DEVICE=7", "DBUS_READ_DEVICE=1", "MEM_OE", "uPC_CLR"]
+    ]
+
+# Store R[vvv], [rs0:rs1]
+for vvv in range(8):
+    op = (0b01111000) | vvv
+    MICROCODE[op] = [
+        FIRST_BYTE_FETCH,
+        SECOND_BYTE_FETCH,
+        ["ABUS_WRITE_DEVICE=3", "DBUS_WRITE_DEVICE=1", "MEM_WE", "uPC_CLR"]
     ]
 
 

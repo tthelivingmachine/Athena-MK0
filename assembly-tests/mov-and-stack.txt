@@ -1,0 +1,15 @@
+0x48 0xF0   ; MOV ACC, 0xF0
+0x01        ; MOV A, ACC
+
+; now we setup some basic stack to 0x8000
+0x48 0x80   ; MOV ACC, 0x80
+0x07        ; MOV SP_Hi, ACC
+; SP_Lo is already 0.
+
+0x61        ; PUSH A
+0x5a        ; POP B
+
+; Let's try rewrite value at stack just for fun
+0x48 0xF1   ; MOV ACC, 0xF1
+0x01        ; MOV A, ACC
+0x61        ; PUSH A
