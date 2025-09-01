@@ -96,6 +96,25 @@ for vvv in range(8):
         ["ABUS_WRITE_DEVICE=3", "DBUS_WRITE_DEVICE=1", "MEM_WE", "uPC_CLR"]
     ]
 
+# Load R[vvv], #imm16
+for vvv in range(8):
+    op = (0b10000000) | vvv
+    MICROCODE[op] = [
+        FIRST_BYTE_FETCH,
+        SECOND_BYTE_FETCH,
+        THIRD_BYTE_FETCH,
+        ["ABUS_WRITE_DEVICE=4", "DBUS_WRITE_DEVICE=7", "DBUS_READ_DEVICE=1", "MEM_OE", "uPC_CLR"]
+    ]
+
+# Store R[vvv], #imm16
+for vvv in range(8):
+    op = (0b10001000) | vvv
+    MICROCODE[op] = [
+        FIRST_BYTE_FETCH,
+        SECOND_BYTE_FETCH,
+        THIRD_BYTE_FETCH,
+        ["ABUS_WRITE_DEVICE=4", "DBUS_WRITE_DEVICE=1", "MEM_WE", "uPC_CLR"]
+    ]
 
 # Define the field mappings based on your specification
 FIELD_DEFINITIONS = {
@@ -111,11 +130,11 @@ FIELD_DEFINITIONS = {
     "IR2_READ_DBUS": {"bits": (10, 10), "value": 1},
     "SP_INC": {"bits": (11, 11), "value": 1},
     "SP_DEC": {"bits": (12, 12), "value": 1},
-    "ABUS_WRITE_DEVICE": {"bits": (13, 14), "value": 0},  # 2 bits
-    "DBUS_READ_DEVICE": {"bits": (15, 17), "value": 0},     # 3 bits
-    "DBUS_WRITE_DEVICE": {"bits": (18, 20), "value": 0}, # 3 bits
-    "STORE_FLAG": {"bits": (21, 21), "value": 1},
-    "STORE_ACC": {"bits": (22, 22), "value": 1},
+    "ABUS_WRITE_DEVICE": {"bits": (13, 15), "value": 0},  # 2 bits
+    "DBUS_READ_DEVICE": {"bits": (16, 18), "value": 0},     # 3 bits
+    "DBUS_WRITE_DEVICE": {"bits": (19, 21), "value": 0}, # 3 bits
+    "STORE_FLAG": {"bits": (22, 22), "value": 1},
+    "STORE_ACC": {"bits": (23, 23), "value": 1},
     "MEM_WE": {"bits": (30,30), "value":1},
     "MEM_OE": {"bits": (31,31), "value":1},
 }

@@ -18,10 +18,10 @@ Athena MK0 is a homebrew CPU.
 - [x] Branch rel #imm8 if (vvv)  
 - [x] Load R[vvv], [rs0:rs1]  
 - [x] Store R[vvv], [rs0:rs1]  
+- [x] Load R[vvv], #imm16  
+- [x] Store R[vvv], #imm16  
 
 ## Unfinished Instructions
-- [ ] Load R[vvv], #imm16  
-- [ ] Store R[vvv], #imm16  
 - [ ] Call #imm16  
 - [ ] Branch #imm16 if (vvv)  
 
