@@ -1,0 +1,77 @@
+#ruledef register
+{
+    r1 => 0b001
+    r2 => 0b010
+    r3 => 0b011
+    r4 => 0b100
+    r5 => 0b101
+    r6 => 0b110
+    r7 => 0b111
+}
+
+#subruledef rel8
+{
+    {addr: u16} => {
+        rel = addr - $ - 2    ; offset = target - (PC after this instr)
+        assert(rel <=  0x7f)  ; forward range
+        assert(rel >= -0x80)  ; backward range
+        rel`8                 ; emit as signed 8-bit
+    }
+}
+
+
+#ruledef
+{
+	; --- Branch (relative, imm8) ---
+	beq.rel {target: rel8} => 0b01101 @ 0b000 @ target
+	bne.rel {target: rel8} => 0b01101 @ 0b001 @ target
+	blt.rel {target: rel8} => 0b01101 @ 0b010 @ target
+	bge.rel {target: rel8} => 0b01101 @ 0b011 @ target
+	blo.rel {target: rel8} => 0b01101 @ 0b100 @ target
+	bhs.rel {target: rel8} => 0b01101 @ 0b101 @ target
+	bra.rel {target: rel8} => 0b01101 @ 0b110 @ target
+	
+	; --- Branch (absolute, imm16) ---
+    beq {imm: i16} => 0b10011 @ 0b000 @ imm
+    bne {imm: i16} => 0b10011 @ 0b001 @ imm
+    blt {imm: i16} => 0b10011 @ 0b010 @ imm
+    bge {imm: i16} => 0b10011 @ 0b011 @ imm
+    blo {imm: i16} => 0b10011 @ 0b100 @ imm
+    bhs {imm: i16} => 0b10011 @ 0b101 @ imm
+    bra {imm: i16} => 0b10011 @ 0b110 @ imm
+}
+
+
+#ruledef
+{
+    ; Format: ll ooo vvv
+
+    ; --- Single-byte ops (no imm) ---
+    mov {r: register}, acc    => 0b00000 @ r
+    mov acc, {r: register}    => 0b00001 @ r
+    add acc, {r: register}    => 0b00010 @ r
+    sub acc, {r: register}    => 0b00011 @ r
+    and acc, {r: register}    => 0b00100 @ r
+    or  acc, {r: register}    => 0b00101 @ r
+    shr acc, {r: register}    => 0b00110 @ r
+    ret                       => 0b00111000
+    nop                       => 0b00111001
+
+    ; --- Two-byte ops ---
+    mov acc, {imm: i8}        => 0b01001 @ 0b000 @ imm
+    add acc, {imm: i8}        => 0b01010 @ 0b000 @ imm
+    pop {r: register}         => 0b01011 @ r @ 0x00
+    push {r: register}        => 0b01100 @ r @ 0x00
+    load {r: register}, [rs0,rs1]   => 0b01110 @ r @ (rs0 << 4 | rs1)
+    store {r: register}, [rs0,rs1]  => 0b01111 @ r @ (rs0 << 4 | rs1)
+
+    ; --- Three-byte ops (imm16) ---
+    load {r: register}, {imm: i16}  => 0b10000 @ r @ imm
+    store {r: register}, {imm: i16} => 0b10001 @ r @ imm
+    call {imm: i16}                 => 0b10010 @ 0b000 @ imm
+}
+
+loop:
+	load r1, 0x4000
+	store r1, 0x4000
+	bra.rel loop

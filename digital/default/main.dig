@@ -3171,11 +3171,6 @@
     </visualElement>
     <visualElement>
       <elementName>Probe</elementName>
-      <elementAttributes/>
-      <pos x="960" y="-580"/>
-    </visualElement>
-    <visualElement>
-      <elementName>Probe</elementName>
       <elementAttributes>
         <entry>
           <string>intFormat</string>
@@ -3493,7 +3488,7 @@
           <string>MEM_OE</string>
         </entry>
       </elementAttributes>
-      <pos x="440" y="600"/>
+      <pos x="440" y="560"/>
     </visualElement>
     <visualElement>
       <elementName>Out</elementName>
@@ -3507,7 +3502,7 @@
           <string>MEM_WE</string>
         </entry>
       </elementAttributes>
-      <pos x="420" y="600"/>
+      <pos x="420" y="560"/>
     </visualElement>
   </visualElements>
   <wires>
@@ -4049,14 +4044,6 @@
     </wire>
     <wire>
       <p1 x="-20" y="600"/>
-      <p2 x="420" y="600"/>
-    </wire>
-    <wire>
-      <p1 x="420" y="600"/>
-      <p2 x="440" y="600"/>
-    </wire>
-    <wire>
-      <p1 x="440" y="600"/>
       <p2 x="480" y="600"/>
     </wire>
     <wire>
@@ -4428,7 +4415,7 @@
       <p2 x="420" y="-1020"/>
     </wire>
     <wire>
-      <p1 x="420" y="600"/>
+      <p1 x="420" y="560"/>
       <p2 x="420" y="640"/>
     </wire>
     <wire>
@@ -4584,7 +4571,7 @@
       <p2 x="440" y="-980"/>
     </wire>
     <wire>
-      <p1 x="440" y="600"/>
+      <p1 x="440" y="560"/>
       <p2 x="440" y="640"/>
     </wire>
     <wire>
@@ -4682,10 +4669,6 @@
     <wire>
       <p1 x="320" y="320"/>
       <p2 x="320" y="340"/>
-    </wire>
-    <wire>
-      <p1 x="960" y="-580"/>
-      <p2 x="960" y="-560"/>
     </wire>
     <wire>
       <p1 x="960" y="-560"/>
