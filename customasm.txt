@@ -68,3 +68,21 @@
     load {r: register}, {imm: i16}  => 0b10000 @ r @ imm
     store {r: register}, {imm: i16} => 0b10001 @ r @ imm
     call {imm: i16}                 => 0b10010 @ 0b000 @ imm
+}
+
+#ruledef
+{
+	; pseudo-instructions made from other instructions
+	mov {r: register}, {imm: i8} => asm
+	{
+		mov acc, {imm}
+		mov {r}, acc
+	}
+	
+	mov {d: register}, {s: register} => asm
+	{
+		mov acc, {s}
+		mov {d}, acc
+	}
+}
+
