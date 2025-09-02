@@ -22,7 +22,7 @@ for vvv in range(8):
     ]
 
 # Implementing all ALU in one go
-for prefix in [0b00010, 0b00011, 0b00100, 0b00101, 0b00110]:
+for prefix in [0b00001, 0b00010, 0b00011, 0b00100, 0b00101, 0b00110]:
     for vvv in range(8):
         op = (prefix << 3) | vvv  # shift prefix into top 5 bits
         MICROCODE[op] = [

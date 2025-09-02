@@ -1,0 +1,34 @@
+start:
+    ; --- load pointer to string into r1:r2 ---
+    mov acc, (msg & 0xFF)
+    mov r1, acc
+    mov acc, (msg >> 8) & 0xFF
+    mov r2, acc
+	call print_loop
+	
+hlt:
+	bra.rel hlt
+	
+print_loop:
+	load r3, [r1,r2]
+	and acc, r3
+#align 8
+	beq.rel done
+	store r3, 0x4000
+	
+	mov acc, r1
+	add acc, 1
+	mov r1, acc
+	blo.rel continue ; C == 1
+	mov acc, r2
+	add acc, 1
+	mov r2, acc
+
+continue:
+	bra.rel print_loop
+
+done:
+	ret
+	
+msg:
+	#d "printf rules!", 0x00

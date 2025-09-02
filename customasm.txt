@@ -19,7 +19,6 @@
     }
 }
 
-
 #ruledef
 {
 	; --- Branch (relative, imm8) ---
@@ -58,12 +57,12 @@
     nop                       => 0b00111001
 
     ; --- Two-byte ops ---
-    mov acc, {imm: i8}        => 0b01001 @ 0b000 @ imm
-    add acc, {imm: i8}        => 0b01010 @ 0b000 @ imm
-    pop {r: register}         => 0b01011 @ r @ 0x00
-    push {r: register}        => 0b01100 @ r @ 0x00
-    load {r: register}, [rs0,rs1]   => 0b01110 @ r @ (rs0 << 4 | rs1)
-    store {r: register}, [rs0,rs1]  => 0b01111 @ r @ (rs0 << 4 | rs1)
+    mov acc, {imm: i8}      => 0b01001 @ 0b000 @ imm
+    add acc, {imm: i8}      => 0b01010 @ 0b000 @ imm
+    pop {r: register}       => 0b01011 @ r @ 0x00
+    push {r: register}      => 0b01100 @ r @ 0x00
+    load {r: register}, [{rs0: register},{rs1: register}]   => 0b01110 @ r @ rs0 @ rs1 @ 0b00
+    store {r: register}, [{rs0: register},{rs1: register}]  => 0b01111 @ r @ rs0 @ rs1 @ 0b00
 
     ; --- Three-byte ops (imm16) ---
     load {r: register}, {imm: i16}  => 0b10000 @ r @ imm
@@ -71,7 +70,3 @@
     call {imm: i16}                 => 0b10010 @ 0b000 @ imm
 }
 
-loop:
-	load r1, 0x4000
-	store r1, 0x4000
-	bra.rel loop
