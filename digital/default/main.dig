@@ -1431,10 +1431,6 @@
       <elementName>Splitter</elementName>
       <elementAttributes>
         <entry>
-          <string>mirror</string>
-          <boolean>true</boolean>
-        </entry>
-        <entry>
           <string>rotation</string>
           <rotation rotation="1"/>
         </entry>
@@ -1447,7 +1443,7 @@
           <string>16</string>
         </entry>
       </elementAttributes>
-      <pos x="880" y="-600"/>
+      <pos x="860" y="-760"/>
     </visualElement>
     <visualElement>
       <elementName>Tunnel</elementName>
@@ -1594,7 +1590,7 @@
       <elementAttributes>
         <entry>
           <string>RectHeight</string>
-          <int>106</int>
+          <int>115</int>
         </entry>
         <entry>
           <string>Label</string>
@@ -1613,14 +1609,14 @@
           <boolean>false</boolean>
         </entry>
       </elementAttributes>
-      <pos x="680" y="-980"/>
+      <pos x="680" y="-1160"/>
     </visualElement>
     <visualElement>
       <elementName>Rectangle</elementName>
       <elementAttributes>
         <entry>
           <string>RectHeight</string>
-          <int>106</int>
+          <int>103</int>
         </entry>
         <entry>
           <string>Label</string>
@@ -1631,7 +1627,7 @@
           <int>2</int>
         </entry>
       </elementAttributes>
-      <pos x="740" y="-980"/>
+      <pos x="740" y="-920"/>
     </visualElement>
     <visualElement>
       <elementName>Tunnel</elementName>
@@ -3702,7 +3698,7 @@
     </wire>
     <wire>
       <p1 x="840" y="-800"/>
-      <p2 x="880" y="-800"/>
+      <p2 x="860" y="-800"/>
     </wire>
     <wire>
       <p1 x="760" y="-800"/>
@@ -4865,7 +4861,11 @@
       <p2 x="220" y="640"/>
     </wire>
     <wire>
-      <p1 x="860" y="-600"/>
+      <p1 x="860" y="-800"/>
+      <p2 x="860" y="-780"/>
+    </wire>
+    <wire>
+      <p1 x="860" y="-760"/>
       <p2 x="860" y="-160"/>
     </wire>
     <wire>
@@ -5001,12 +5001,8 @@
       <p2 x="1260" y="-500"/>
     </wire>
     <wire>
-      <p1 x="880" y="-600"/>
+      <p1 x="880" y="-760"/>
       <p2 x="880" y="-220"/>
-    </wire>
-    <wire>
-      <p1 x="880" y="-800"/>
-      <p2 x="880" y="-620"/>
     </wire>
     <wire>
       <p1 x="880" y="380"/>

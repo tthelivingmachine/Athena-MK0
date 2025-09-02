@@ -68,5 +68,3 @@
     load {r: register}, {imm: i16}  => 0b10000 @ r @ imm
     store {r: register}, {imm: i16} => 0b10001 @ r @ imm
     call {imm: i16}                 => 0b10010 @ 0b000 @ imm
-}
-
