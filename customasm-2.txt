@@ -5,8 +5,8 @@
     r3 => 0b011
     r4 => 0b100
     r5 => 0b101
-    r6 => 0b110
-    r7 => 0b111
+    spl => 0b110
+    sph => 0b111
 }
 
 #subruledef rel8
@@ -73,7 +73,7 @@
 #ruledef
 {
 	; pseudo-instructions made from other instructions
-	mov {r: re; --- Push with stack offset ---
+	; --- Push with stack offset ---
     push {r: register}, #{ofs: i8} => asm
     {
         ; effective address = SP + ofs
@@ -103,7 +103,9 @@
 
         ; load from [SP + ofs]
         load {r}, [r1, r2]
-    }gister}, {imm: i8} => asm
+    }
+	
+	mov {r: register}, {imm: i8} => asm
 	{
 		mov acc, {imm}
 		mov {r}, acc
@@ -182,7 +184,7 @@
     }
 
     ; --- Push with stack offset ---
-    push {r: register}, #{ofs: i8} => asm
+    push {r: register}, {ofs: i8} => asm
     {
         ; compute low = SPL + ofs
         mov acc, SPL
@@ -191,9 +193,9 @@
 
         ; compute high = SPH + carry
         mov acc, SPH
-        bhs.rel .no_carry_push_{r}_{ofs}   ; branch if no carry
+        bhs.rel no_carry_push   ; branch if no carry
         add acc, 1
-    .no_carry_push_{r}_{ofs}:
+no_carry_push:
         mov r2, acc
 
         ; store [r1:r2]
@@ -201,7 +203,7 @@
     }
 
     ; --- Pop with stack offset ---
-    pop {r: register}, #{ofs: i8} => asm
+    pop {r: register}, {ofs: i8} => asm
     {
         ; compute low = SPL + ofs
         mov acc, SPL
@@ -210,9 +212,9 @@
 
         ; compute high = SPH + carry
         mov acc, SPH
-        bhs.rel .no_carry_pop_{r}_{ofs}
+        bhs.rel no_carry_pop
         add acc, 1
-    .no_carry_pop_{r}_{ofs}:
+no_carry_pop:
         mov r2, acc
 
         load {r}, [r1, r2]
